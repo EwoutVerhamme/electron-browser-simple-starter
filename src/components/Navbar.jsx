@@ -38,7 +38,7 @@ const Navbar = ({ setUrl }) => {
         >
           <AiOutlineReload size={"1.5em"} />
         </button>
-        <form className="flex w-full" onSubmit={handleSubmit}>
+        <form className="flex w-full mb-2" onSubmit={handleSubmit}>
           <input
             type="text"
             name="url-search"

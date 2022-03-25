@@ -1,6 +1,9 @@
-/* .App {
-  text-align: center;
-} */
+html, body, #root, .App, .ant-tabs, .ant-tabs-content-holder, .ant-tabs-content, .ant-tabs-tabpane {
+  height: 100%;
+}
+webview {
+  height: 95.75%;
+}
 
 .App-logo {
   height: 40vmin;
