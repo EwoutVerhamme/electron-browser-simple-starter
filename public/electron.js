@@ -7,6 +7,7 @@ const createMainWindow = () => {
     webPreferences: {
       nodeIntegration: false,
       devTools: true,
+      webviewTag: true,
     },
   });
 
