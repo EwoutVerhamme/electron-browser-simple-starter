@@ -3,16 +3,24 @@ import Navbar from "./Navbar";
 import Favpages from "./Favpages";
 
 const Tabbody = () => {
-  const [url, setUrl] = useState(null);
+  var [url, setUrl] = useState(null);
+  var [Webview, setWebview] = useState(null);
+
   useEffect(() => {
-    console.log(url);
+    // console.log(url);
     // ipcRenderer.send("changeWindow", url);
   }, [url]);
+
+  const setWebviewRef = element => {
+    setWebview(element);
+    // console.log(Webview);
+  }
+
   return (
     <>
-      <Navbar setUrl={setUrl} />
+      <Navbar setUrl={setUrl} webview={Webview} />
       {/* <Favpages /> */}
-      <webview id="content_frame" src={url}></webview>
+      <webview id="content_frame" ref={setWebviewRef} src={url ? url : "http://www.google.com"}></webview>
     </>
   );
 };

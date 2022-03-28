@@ -1,13 +1,13 @@
 import React, { useState, useRef } from "react";
 import { AiOutlineReload, AiOutlineRight, AiOutlineLeft } from "react-icons/ai";
 
-const Navbar = ({ setUrl }) => {
+const Navbar = ({ setUrl, webview }) => {
   const urlRef = useRef();
 
   const handleSubmit = (e) => {
     var url = urlRef.current.value;
     e.preventDefault();
-    console.log(`URL before: ${url}`);
+    // console.log(`URL before: ${url}`);
     if(!url.includes("www")) {
       url = "www." + url;
     }
@@ -23,7 +23,7 @@ const Navbar = ({ setUrl }) => {
           id="brows-back"
           className="brows-btn p-1 m-1 hover:bg-gray-200 rounded-full"
           onClick={() => {
-            history.back();
+            webview.goBack();
           }}
         >
           <AiOutlineLeft size={"1.5em"} />
@@ -32,7 +32,7 @@ const Navbar = ({ setUrl }) => {
           id="brows-forw"
           className="brows-btn p-1 m-1 hover:bg-gray-200 rounded-full"
           onClick={() => {
-            history.forward();
+            webview.goForward();
           }}
         >
           <AiOutlineRight size={"1.5em"} />
@@ -41,7 +41,7 @@ const Navbar = ({ setUrl }) => {
           id="brows-relo"
           className="brows-btn p-1 m-1 hover:bg-gray-200 rounded-full"
           onClick={() => {
-            location.reload();
+            webview.reload();
           }}
         >
           <AiOutlineReload size={"1.5em"} />
@@ -53,6 +53,7 @@ const Navbar = ({ setUrl }) => {
             id="url-search"
             className="leading-8 px-2 mx-1 bg-gray-200 w-full"
             ref={urlRef}
+            defaultValue="google.com"
           />
           <input
             type="text"
