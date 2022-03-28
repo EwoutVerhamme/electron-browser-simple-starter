@@ -5,8 +5,16 @@ const Navbar = ({ setUrl }) => {
   const urlRef = useRef();
 
   const handleSubmit = (e) => {
+    var url = urlRef.current.value;
     e.preventDefault();
-    setUrl(urlRef.current.value);
+    console.log(`URL before: ${url}`);
+    if(!url.includes("www")) {
+      url = "www." + url;
+    }
+    if(!url.includes("http://")) {
+      url = "http://" + url;
+    }
+    setUrl(url);
   };
   return (
     <>

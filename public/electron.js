@@ -11,7 +11,7 @@ const createMainWindow = () => {
     },
   });
 
-  // mainWindow.maximize();
+  mainWindow.maximize();
   mainWindow.webContents.openDevTools();
 
   const startURL = isDev
