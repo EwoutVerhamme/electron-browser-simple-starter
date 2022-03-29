@@ -6,7 +6,7 @@ import Tabbody from "./Tabbody";
 const { TabPane } = Tabs;
 
 const initialPanes = [
-  { title: "Thuispagina", content: <Tabbody />, key: "1", closable: true },
+  { title: "Thuispagina", content: <Tabbody type="landing" />, key: "1", closable: false },
 ];
 
 class Tab extends React.Component {
