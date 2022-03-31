@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require("electron");
+const { app, BrowserWindow, session } = require("electron");
 const isDev = require("electron-is-dev");
 const path = require("path");
 
@@ -7,6 +7,7 @@ const createMainWindow = () => {
     webPreferences: {
       nodeIntegration: false,
       devTools: true,
+      webviewTag: true,
     },
   });
 
@@ -32,6 +33,12 @@ const createMainWindow = () => {
 };
 
 app.whenReady().then(() => {
+  const filter = { urls: ['*://*.example.com/*'] };
+
+  session.defaultSession.webRequest.onHeadersReceived(filter, (details, callback) => {
+      details.responseHeaders['Access-Control-Allow-Origin'] = [ 'http://localhost:3000' ];
+      callback({ responseHeaders: details.responseHeaders });
+  });
   createMainWindow();
 
   app.on("activate", () => {
